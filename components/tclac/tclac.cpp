@@ -19,6 +19,9 @@ ClimateTraits tclacClimate::traits() {
 	traits.set_supports_current_temperature(true);
 	traits.set_supports_two_point_target_temperature(false);
 
+	traits.set_visual_min_for_temperature(16.0);  // ← HINZUFÜGEN!
+	traits.set_visual_max_for_temperature(31.0);  // ← HINZUFÜGEN!
+	
 	traits.set_supported_modes(this->supported_modes_);
 	traits.set_supported_presets(this->supported_presets_);
 	traits.set_supported_fan_modes(this->supported_fan_modes_);
