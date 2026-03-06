@@ -309,11 +309,12 @@ async def tclac_set_horizontal_swing_direction_to_code(config, action_id, templa
 
 
 # Добавление конфигурации в код
-async def to_code(config):
+def to_code(config):
     var = cg.new_Pvariable(config[CONF_ID])
-    await cg.register_component(var, config)
-    await uart.register_uart_device(var, config)
-    await climate.register_climate(var, config)
+    yield cg.register_component(var, config)
+    yield uart.register_uart_device(var, config)
+    yield climate.register_climate(var, config)
+
     if CONF_BEEPER in config:
         cg.add(var.set_beeper_state(config[CONF_BEEPER]))
     if CONF_DISPLAY in config:
@@ -333,9 +334,9 @@ async def to_code(config):
 
     if CONF_TX_LED in config:
         cg.add_define("CONF_TX_LED")
-                    tx_led_pin = await cg.gpio_pin_expression(config[CONF_TX_LED])
+        tx_led_pin = yield cg.gpio_pin_expression(config[CONF_TX_LED])
         cg.add(var.set_tx_led_pin(tx_led_pin))
     if CONF_RX_LED in config:
         cg.add_define("CONF_RX_LED")
-                    rx_led_pin = await cg.gpio_pin_expression(config[CONF_RX_LED])
+        rx_led_pin = yield cg.gpio_pin_expression(config[CONF_RX_LED])
         cg.add(var.set_rx_led_pin(rx_led_pin))
