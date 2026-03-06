@@ -2,7 +2,7 @@
 # # # # #                                   NICHT BEARBEITEN!!                                  # # # # #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-# Компонент климата
+# Klimakomponente
 external_components:
   - source:
       url: https://github.com/I-am-nightingale/tclac.git
